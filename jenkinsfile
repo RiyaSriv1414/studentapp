@@ -13,10 +13,8 @@ pipeline {
         stage ('Initialize-maven') {
             steps {
                 sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-		    echo  "JAVA_Home = ${JAVA_HOME}"
-		     java -version
+                    
+		     
                      mvn --version
                      mvn clean package'''
             }
