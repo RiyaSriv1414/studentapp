@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git SCM checkout') {
             steps {
-                git credentialsId: 'Git', url: 'https://github.com/RiyaSriv1414/my-app.git'
+                git branch: 'main', credentialsId: 'Mycred', url: 'https://github.com/RiyaSriv1414/studentapp.git'
             }
         }
         stage('MVN package Build') {
