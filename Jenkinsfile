@@ -11,5 +11,10 @@ pipeline {
                 bat "mvn clean install"
             }
         }
+        stage('Build Docker Image"){
+              steps {
+                  bat "docker build -t riyasriv/imagefirst:(${BUILD_NUMBER} ."
+              }
+          }
     }
 }
