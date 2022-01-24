@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+    registryCredential = 'dockerhub'
+    }
     stages {
         stage('Git SCM checkout') {
             steps {
