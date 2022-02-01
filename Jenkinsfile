@@ -19,5 +19,14 @@ pipeline {
                   bat "docker build -t riyasriv/imagefirst:${BUILD_NUMBER} ."
               }
           }
+        stage('Push Docker Image') {
+              steps {
+                  withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'dockerlogin')]) {
+                  // some block
+                      bat "docker login -u riyasriv -p ${dockerlogin}"
+                  }
+                      bat "docker push riyasriv/imagefirst:${BUILD_NUMBER}"
+              }
+          }
     }
 }
