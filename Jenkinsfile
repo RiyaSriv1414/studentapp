@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-    registryCredential = 'dockerhub'
-    }
     stages {
         stage('Git SCM checkout') {
             steps {
@@ -21,9 +18,9 @@ pipeline {
           }
         stage('Push Docker Image') {
               steps {
-                  withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'dockerlogin')]) {
-                  // some block
-                      bat "docker login -u riyasriv -p ${dockerlogin}"
+                 withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'dockerpwd')]) {
+                 // some block
+                      bat "docker login -u riyasriv -p ${dockerpwd}"
                   }
                       bat "docker push riyasriv/imagefirst:${BUILD_NUMBER}"
               }
