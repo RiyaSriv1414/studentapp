@@ -11,5 +11,12 @@ pipeline {
                 bat "mvn clean install"
             }
         }
+        stage("build & SonarQube analysis") {
+            steps {
+              withSonarQubeEnv('SonarQube_fresh') {
+                sh 'mvn clean package sonar:sonar'
+              }
+            }
+          }
        }
      }
