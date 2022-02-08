@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Git SCM checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'Mycred', url: 'https://github.com/RiyaSriv1414/studentapp.git'
+            }
+        }
+        stage('MVN package Build') {
+            steps {
+                bat "mvn clean install"
+            }
+        }
+        stage("build & SonarQube analysis") {
+              withSonarQubeEnv('SonarQube_new') {
+                 bat 'mvn clean package sonar:sonar'
+              }
+          }
+      }
+    }
