@@ -22,10 +22,10 @@ pipeline {
                sonar.sourceEncoding=UTF-8
                sonar.language = java
                sonar.sources = src/main/
-               sonar.host.url = http://localhost:9000
                sonar.exclusions = **/*.java
               }
             }
           }
        }
      }
+    }
