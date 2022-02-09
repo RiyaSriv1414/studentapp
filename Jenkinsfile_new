@@ -14,16 +14,16 @@ pipeline {
         stage("build & SonarQube analysis") {
             steps {
               withSonarQubeEnv('SonarQube') {
-               -D sonar.login = admin
-               -D sonar.password=admin
-               -D sonar.projectName = JavaSonar
-               -D sonar.projectKey=JavaSonar   
-               -D sonar.projectVersion =1.0
-               -D sonar.sourceEncoding=UTF-8
-               -D sonar.language = java
-               -D sonar.sources = src/main/
-               -D sonar.host.url = http://localhost:9000
-               -D sonar.exclusions = **/*.java
+               sonar.login = admin
+               sonar.password=admin
+               sonar.projectName = JavaSonar
+               sonar.projectKey=JavaSonar   
+               sonar.projectVersion =1.0
+               sonar.sourceEncoding=UTF-8
+               sonar.language = java
+               sonar.sources = src/main/
+               sonar.host.url = http://localhost:9000
+               sonar.exclusions = **/*.java
               }
             }
           }
