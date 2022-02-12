@@ -11,12 +11,14 @@ pipeline {
                 bat "mvn clean install"
             }
         }
-        stage("build & SonarQube analysis") {
+       stage("build & SonarQube analysis") {
             steps {
-             bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+              withSonarQubeEnv('SonarQube') {
+                bat 'mvn clean package sonar:sonar'
               }
             }
           }
        }
+  }
      
     
